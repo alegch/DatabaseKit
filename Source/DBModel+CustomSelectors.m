@@ -30,24 +30,28 @@
                 }), "@@:");
             return YES;
             }
+        break;
         case DBAttributeSelectorWriter: {
                 class_addMethod(self, aSEL, imp_implementationWithBlock(^(DBModel *self, id value) {
                     [self setValue:value forKey:attributeName];
                 }), "v@:@");
             return YES;
             }
+        break;
         case DBAttributeSelectorAdder: {
                 class_addMethod(self, aSEL, imp_implementationWithBlock(^(DBModel *self, id value) {
                     [self addRecord:value forKey:attributeName];
                 }), "v@:@");
             return YES;
         }
+        break;
         case DBAttributeSelectorRemover: {
                 class_addMethod(self, aSEL, imp_implementationWithBlock(^(DBModel *self, id value) {
                     [self removeRecord:value forKey:attributeName];
                 }), "v@:@");
             return YES;
         }
+        break;
     }
     return [super resolveInstanceMethod:aSEL];
 }
