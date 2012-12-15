@@ -28,26 +28,26 @@
                 class_addMethod(self, aSEL, imp_implementationWithBlock(^(DBModel *self){
                     return [self valueForKey:attributeName];
                 }), "@@:");
-            }
             return YES;
+            }
         case DBAttributeSelectorWriter: {
                 class_addMethod(self, aSEL, imp_implementationWithBlock(^(DBModel *self, id value) {
                     [self setValue:value forKey:attributeName];
                 }), "v@:@");
-            }
             return YES;
+            }
         case DBAttributeSelectorAdder: {
                 class_addMethod(self, aSEL, imp_implementationWithBlock(^(DBModel *self, id value) {
                     [self addRecord:value forKey:attributeName];
                 }), "v@:@");
-            }
             return YES;
+        }
         case DBAttributeSelectorRemover: {
                 class_addMethod(self, aSEL, imp_implementationWithBlock(^(DBModel *self, id value) {
                     [self removeRecord:value forKey:attributeName];
                 }), "v@:@");
-            }
             return YES;
+        }
     }
     return [super resolveInstanceMethod:aSEL];
 }
